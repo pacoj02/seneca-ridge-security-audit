@@ -1,0 +1,5 @@
+<!-- Line added inside <syscheck> in /var/ossec/etc/ossec.conf on the SRTL agent (requirement T-05).
+     Watches the SSH settings and sudo rules folders in real time instead of every 12 hours.
+     report_changes (file diffs) is left off on purpose: /etc/ssh holds the server's private
+     host keys, and diffs would copy file contents into Wazuh. -->
+<directories realtime="yes" check_all="yes">/etc/ssh,/etc/sudoers.d</directories>

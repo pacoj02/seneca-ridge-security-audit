@@ -1,0 +1,13 @@
+<!-- Added to /var/ossec/etc/ossec.conf on the Wazuh manager (requirement F-04).
+     When an SSH brute-force rule fires (5712 non-existent user, 5763 failed
+     authentication), the agent that saw it blocks the source address in its
+     own firewall for 180 seconds. -->
+<ossec_config>
+  <!-- SRTL capstone: block SSH brute-force sources for 3 minutes -->
+  <active-response>
+    <command>firewall-drop</command>
+    <location>local</location>
+    <rules_id>5712,5763</rules_id>
+    <timeout>180</timeout>
+  </active-response>
+</ossec_config>
